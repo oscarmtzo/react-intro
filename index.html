@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- React CDN from unpkg.com -->
+    <!-- This first one allow us to use ReactDOM, help us to tie React elements to the DOM-->
+    <script crossorigin src="https://unpkg.com/react@16.13.0/umd/react.development.js"></script>
+    <!-- This SECOND one  -->
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.development.js"></script>
+    <!-- Here Babel transpiles JavaScript Extended code (JSX) into browser-understandable code  -->
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Here is the type of text is added in order for babel to grab this script and transpile it to proper HTML and JS files for the browser -->
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        // const mainHeading = document.createElement('h1');
+        // console.log(mainHeading)
+        // mainHeading.textContent = 'Hello there Ironhackers!';
+        // root.appendChild(mainHeading);          
+
+        // ----- This is after adding scripts of React to the head
+        /*
+        *   {React.createElement()} provide us with a method to create elements, instead of creating them and appending them to the DOM 
+        */
+
+        // ---- This is how is React done under the hood 
+        // const element = React.createElement('h1', {
+        //     className: 'container',
+        //     children: [
+        //         React.createElement('h1', {
+        //             children: 'Are you React-ing Deloittes?'
+        //         }),
+        //         React.createElement('h3', {
+        //             children: [
+        //                 'Time now is: ',
+        //                 `${new Date().getHours()}:
+        //                 ${new Date().getMinutes()}:
+        //                 ${new Date().getSeconds()}`
+        //             ]
+        //         })
+        //     ]
+        // });
+
+        //--- This is how React is currently done by developers using the React Library
+        const element = (
+            <div className="container">
+                <h1>Are you React-ing Ironhackers</h1>
+                <h3>
+                    Time now is:
+                    {new Date().getHours()}: 
+                    {new Date().getMinutes()}: 
+                    {new Date().getSeconds()}    
+                </h3>
+            </div>
+        );
+
+        /*
+        * {React.DOM.render()} this method has to parameters:
+        * @param {element} is the element we want to show on the page
+        * @param {root} is the element which holds the previous element (parent element)
+        */
+        ReactDOM.render(element, root);
+    </script>
+</body>
+</html>
